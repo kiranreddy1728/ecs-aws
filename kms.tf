@@ -1,7 +1,10 @@
 # Creates/manages KMS CMK
 resource "aws_kms_key" "this" {
   description              = "kms key"
-  deletion_window_in_days  = 30
+  deletion_window_in_days  = 7
+  customer_master_key_spec = "SYMMETRIC_DEFAULT"
+  key_usage = "ENCRYPT_DECRYPT"
+  enable_key_rotation      = true
 }
 
 #Add an alias to the key
